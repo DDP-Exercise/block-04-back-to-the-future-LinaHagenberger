@@ -5,7 +5,7 @@
  *     Marty! Marty can you read me? This is Doc Brown,
  *     im messaging you from the Year of 1955!
  *
- *     The Flux Capacitor worked and I traveled back in time!
+ *     The Flux Capacitor worked and I traveled bavck in time!
  *     I don't have time to explain all the details, but
  *     time itself is of the essence Marty! As proud as I am
  *     of my achievement, it seems like I can't come back to
@@ -35,3 +35,43 @@
 
 // HINT:
 // setInterval(functionName, 1000); will call functionName() every 1000 miliseconds.
+
+import {timeModel} from "./model.time.js";
+import {digitalView} from "./view.digital.js";
+import {analagoueView} from "./view.analagoue.js";
+
+let timeController = {
+
+    updateTime: function () {
+        let now = new Date();
+        let time = timeModel.setTime(now);
+
+        digitalView.update(time);
+        analagoueView.update(time);
+    },
+
+    startClock: function () {
+        this.container = document.createElement("div");
+        this.container.classList.add("container");
+        document.body.appendChild(this.container);
+
+        analagoueView.init(this.container);
+        digitalView.init(this.container);
+
+        let btn = document.createElement("button");
+        btn.textContent = "Save current time";
+
+        btn.addEventListener("click", () => {
+            let now = new Date();
+            localStorage.setItem("savedTime", now.toISOString());
+            alert("Saved to localStorage!");
+        });
+
+        this.container.appendChild(btn);
+
+        this.updateTime();
+        setInterval(this.updateTime.bind(this), 1000);
+    }
+};
+
+timeController.startClock();

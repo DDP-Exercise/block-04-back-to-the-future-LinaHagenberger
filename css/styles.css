@@ -1,10 +1,62 @@
-body{
-    background-image: url('../img/BTTFII.webp');
-    background-repeat: no-repeat;
+body {
+    background-image: url('../img/moon_background.jpg');
     background-size: cover;
-    background-position: center center;
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
+    background-position: center;
     margin: 0;
+    height: 100vh;
+}
+
+.digital {
+    font-size: 80px;
+    color: white;
+    font-family: Monserrat, sans-serif;
+}
+
+.clock {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: white;
+    position: relative;
+}
+
+.clock div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: left;
+}
+
+.hourHand {
+    width: 65px;
+    height: 4px;
+    background: black;
+}
+
+.minuteHand {
+    width: 90px;
+    height: 4px;
+    background: black;
+}
+
+.secondHand {
+    width: 110px;
+    height: 2px;
+    background: hotpink;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.container {
+    position: absolute;
+    right: 22%;
+    top: 50%;
+    transform: translateY(-50%) scale(1.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
